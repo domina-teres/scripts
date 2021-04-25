@@ -1,0 +1,57 @@
+ local Target = GetPlayer(Args[1]);
+    local OldPos = GetRoot().CFrame
+    local Humanoid = ReplaceHumanoid();
+    local TempRespawnTimes = {}
+    for i, v in next, Target do
+        TempRespawnTimes[v.Name] = RespawnTimes[LocalPlayer.Name] <= RespawnTimes[v.Name]
+    end
+    for i, v in next, Target do
+        if (#Target == 1 and TempRespawnTimes[v.Name]) then
+            LocalPlayer.Character:Destroy();
+            LocalPlayer.CharacterAdded:Wait();
+            LocalPlayer.Character:WaitForChild("Humanoid");
+            wait()
+            Humanoid = ReplaceHumanoid();
+        end
+    end
+
+    coroutine.wrap(function()
+        for i, v in next, Target do
+            repeat
+                if (GetCharacter(v)) then
+                    if (isSat(v)) then
+                        Utils.Notify(Caller or LocalPlayer, nil, v.Name .. " is sitting down, could not kill");
+                        do break end
+                    end
+
+                    if (RespawnTimes[LocalPlayer.Name] <= RespawnTimes[v.Name]) then
+                        do break end
+                    end
+
+                    local TargetRoot = GetRoot(v);
+                    local Tool = LocalPlayer.Backpack:FindFirstChildWhichIsA("Tool") or GetCharacter():FindFirstChildWhichIsA("Tool");
+                    if (not Tool) then
+                        do break end
+                    end
+                    Tool.CanBeDropped = true
+                    Tool.Parent = GetCharacter();
+                    Tool.Handle.Size = Vector3.new(4, 4, 4);
+                    for i, v in next, Tool:GetDescendants() do
+                        if (v:IsA("Sound")) then
+                            v:Destroy();
+                        end
+                    end
+                    CFrameTool(Tool, GetRoot(v).CFrame)
+                    firetouchinterest(TargetRoot, Tool.Handle, 0);
+                    firetouchinterest(TargetRoot, Tool.Handle, 1);
+                else
+                    Utils.Notify(Caller or LocalPlayer, "Fail", v.Name .. " is dead or does not have a root part, could not kill.");
+                end
+            until true
+        end
+    end)()
+    Humanoid:ChangeState(15);
+    wait(.3);
+    LocalPlayer.Character:Destroy();
+    LocalPlayer.CharacterAdded:Wait();
+    LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = OldPos

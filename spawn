@@ -1,0 +1,11 @@
+if (Tbl[1]) then
+        Tbl[1]:Disconnect();
+    end
+    local Position = GetRoot().CFrame
+    local Spawn = LocalPlayer.CharacterAdded:Connect(function()
+        LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = Position
+    end)
+    Tbl[1] = Spawn
+    AddPlayerConnection(LocalPlayer, Spawn);
+    local SpawnLocation = table.pack(table.unpack(tostring(Position):split(", "), 1, 3));
+    SpawnLocation.n = nil

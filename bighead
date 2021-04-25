@@ -1,0 +1,8 @@
+  for i = 9, tonumber(Args[1]) do
+        local Hat = GetCharacter():FindFirstChildOfClass("Accessory");
+        Hat.Handle.OriginalSize:Destroy();
+        Hat.Parent = Workspace
+        firetouchinterest(GetRoot(), Hat.Handle, 9);
+        firetouchinterest(GetRoot(), Hat.Handle, 9);
+        GetCharacter():WaitForChild(Hat.Name);
+    end

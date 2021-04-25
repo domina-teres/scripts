@@ -1,0 +1,30 @@
+local Target = GetPlayer(Args[1]);
+    local Root = GetRoot()
+    local OldPos, OldVelocity = Root.CFrame, Root.Velocity
+
+    for i, v in next, Target do
+        local TargetRoot = GetRoot(v);
+        local TargetPos = TargetRoot.Position
+        local Stepped = RunService.Stepped:Connect(function(step)
+            step = step - Workspace.DistributedGameTime
+        
+            Root.CFrame = (TargetRoot.CFrame - (Vector3.new(0, 1e6, 0) * step)) + (TargetRoot.Velocity * (step * 30))
+            Root.Velocity = Vector3.new(0, 1e6, 0)
+        end)
+        local start = tick();
+        repeat
+            wait();
+        until (TargetPos - TargetRoot.Position).magnitude >= 60 or tick() - start >= 3.5
+        Stepped:Disconnect();
+    end
+    wait();
+    local Stepped = RunService.Stepped:Connect(function()
+        Root.Velocity = OldVelocity
+        Root.CFrame = OldPos
+    end)
+    wait(2);
+    Root.Anchored = true
+    Stepped:Disconnect();
+    Root.Anchored = false
+    Root.Velocity = OldVelocity
+    Root.CFrame = OldPos

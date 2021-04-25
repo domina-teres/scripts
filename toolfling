@@ -1,0 +1,4 @@
+GetHumanoid():UnequipTools();
+    local Tool = LocalPlayer.Backpack:FindFirstChildOfClass("Tool");
+    Tool.GripPos = Vector3.new(math.huge, math.huge, math.huge);
+    Tool.Parent = GetCharacter();

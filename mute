@@ -1,0 +1,8 @@
+    local Target = GetPlayer(Args[1]);
+    for i, v in next, Target do
+        for i2, v2 in next, v.Character:GetDescendants() do
+            if (v2:IsA("Sound")) then
+                v2.Playing = false
+            end
+        end
+    end

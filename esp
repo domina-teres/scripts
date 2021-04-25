@@ -1,0 +1,22 @@
+    Tbl.Billboards = {}
+    table.forEach(Players:GetPlayers(), function(i,v)
+        Tbl.Billboards[#Tbl.Billboards + 1] = Utils.Locate(v);
+        local Esp = v.CharacterAdded:Connect(function()
+            v.Character:WaitForChild("HumanoidRootPart");
+            v.Character:WaitForChild("Head");
+            Tbl.Billboards[#Tbl.Billboards + 1] = Utils.Locate(v);
+        end)
+        Tbl[#Tbl + 1] = Esp
+    end);
+
+    PlayerAddedConnection = Players.PlayerAdded:Connect(function(Player)
+        Player.Character:WaitForChild("HumanoidRootPart");
+        Player.Character:WaitForChild("Head");
+        Tbl.Billboards[#Tbl.Billboards + 1] = Utils.Locate(v);
+        local Esp = Player.CharacterAdded:Connect(function()
+            Player.Character:WaitForChild("HumanoidRootPart");
+            Player.Character:WaitForChild("Head");
+            Tbl.Billboards[#Tbl.Billboards + 1] = Utils.Locate(Player);
+        end)
+        Tbl[#Tbl + 1] = Esp
+    end);

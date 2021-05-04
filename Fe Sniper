@@ -1,5 +1,5 @@
 game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title = "Selexity (Remake)";
+    Title = "Vuyme Hub";
     Text = "Script Remaked By TERES#7678";
 })
 

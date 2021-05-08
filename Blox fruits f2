@@ -1,0 +1,308 @@
+local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
+
+local win = DiscordLib:Window("Wrybruh Hub (blox Fruits)")
+
+local serv = win:Server("Scripts", "")
+local serv1 = win:Server("Credits", "")
+
+
+local btns = serv:Channel("Character")
+local bns = serv:Channel("Esp")
+local blk = serv:Channel("Player Esp")
+local bs = serv:Channel("Teleport")
+local bsn = serv:Channel("Teleport Player")
+local b = serv:Channel("Auto Farm")
+local k = serv1:Channel("Credits")
+
+local sldr = btns:Slider("WalkSpeed", 0, 1000, 16, function(t)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = t
+    end)
+local sldr = btns:Slider("Jumppower", 0, 1000, 50, function(t)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = t
+end)
+btns:Button("Click Tp", function()
+    local LocalPlayer = game.Players.LocalPlayer
+    local rp = LocalPlayer.Character.HumanoidRootPart
+    local tool = Instance.new("Tool",LocalPlayer.Backpack)
+    local mouse = LocalPlayer:GetMouse()
+    tool.Name = "click tp"
+    tool.RequiresHandle = false
+    tool.Activated:Connect(function()
+        rp.CFrame = CFrame.new(mouse.Hit.X,mouse.Hit.Y + 4,mouse.Hit.Z)
+    end)
+end)
+
+bns:Toggle("Fruits Esp",false, function(bool)
+    for i,v in pairs(game.Workspace:GetDescendants()) do -- grabs everything from workspace
+        if v.ClassName == 'TouchTransmitter' and v.Parent.Name == 'Handle' then -- checks if it has a handle and if its a touchtransmitter
+            local BillboardGui = Instance.new('BillboardGui') -- Makes Billboardgui
+            local TextLabel = Instance.new('TextLabel') -- makes text label
+            
+            BillboardGui.Parent = v.Parent -- what the billboardgui goes into
+            BillboardGui.AlwaysOnTop = true -- if its on top or not
+            BillboardGui.Size = UDim2.new(0, 50, 0, 50) -- size of it
+            BillboardGui.StudsOffset = Vector3.new(0,2,0)
+            
+            TextLabel.Parent = BillboardGui -- putting textlabel into billboardgui
+            TextLabel.BackgroundColor3 = Color3.new(1,1,1) -- color
+            TextLabel.BackgroundTransparency = 1 -- transparency
+            TextLabel.Size = UDim2.new(1, 0, 1, 0) -- size
+            TextLabel.Text = v.Parent.Parent.Name -- what the label says
+            TextLabel.TextColor3 = Color3.new(1, 0, 0) -- color
+            TextLabel.TextScaled = true -- if the text is scaled or not
+        end
+        end
+end) 
+
+ 
+    
+    
+bs:Button("Sky", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-5033.35, -3.35785, -2469.32)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("Jungle", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-1508.65, 37.7, -5.38274)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("Colesseum", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-1543.26, 1.69704, -3017.28)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("Desert", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(998.465, -3.77234, 4099.51)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("Pirate", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-989.125, 19.1, 3813.62)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("Prison", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(4876.03, 37.5, 745.872)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("Skyarea1", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-4709.01, 840.56, -1878.43)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("Skyarea2", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-7874.09, 5541.66, -370.307)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("MobBoss", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-2819.3, -3.90733, 5314.46)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("Windmill", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(773.952, 0.654241, 1436.32)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("Town", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-543.766, -2.49999, 1271.32)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("Fountain", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(6234.04, 3.7911, 4117.49)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("Fishmen", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(61599, 13.8965, 1502.88)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("MarineBase", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-4928.82, 27, 4390.05)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("Magma", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-5783.85, 8.17414, 8881.73)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+bs:Button("MarineStart", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-2745.46, 10.6368, 2321.95)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
+b:Toggle("Chest Auto Farm (Risk of Ban)",false, function(bool)
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(5336.07, 81.3244, 4597.77)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+    
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(5429.48, 160.566, 780.675)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+    
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-5509.15, 16.698, 8693.64)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+    
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-5073.21, 2.65216, -2397.92)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+    
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-7995.59, 5680.79, -2005.76)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+    
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-3117.45, 208.014, 2048.07)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+    
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-5274.14, 387.405, -2183.53)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+    
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(61506.8, 207.082, 979.012)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+    
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-5776.02, 7.34364, 8576.63)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+    
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(61671.7, 163.283, 1520.69)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+    
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-4582.52, 871.296, -1662.11)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+    
+    
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-7995.59, 5680.79, -2005.76)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+    
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-2878.49, 23.2418, 2303.77)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+    
+    
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-970.972, 12.5049, 3990.19)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end) 
+
+k:Label("Scripts By:Teres and anthony")
+k:Label("Owner:anthony")
+k:Label("Ui By:Dawid")
+
+bsn:Textbox("Teleport Player", "Player name here!", true, function(t)
+local p1 = game.Players.LocalPlayer.Character.HumanoidRootPart
+local p2 = t
+local pos = p1.CFrame
+
+p1.CFrame = game.Players[p2].Character.HumanoidRootPart.CFrame
+    end)
+
+
+blk:Toggle("Box Esp",false, function(bool)
+    loadstring(game:HttpGet("https://pastebin.com/raw/wqQtdDuE"))()
+end) 
+blk:Toggle("Tracers Esp",false, function(bool)
+    loadstring(game:HttpGet("https://pastebin.com/raw/S48mMmFU"))()
+end) 
